@@ -14,7 +14,8 @@ def definition(name):
   if name in data:
     return data[name]
   elif len(get_close_matches(name,data.keys())) > 0:
-    check = input("Did you mean %s instead? Enter Y if yes, otherwise N to exit: " %)get_close_matches(name,data.keys())[0])
+    check = input("Did you mean %s instead? Enter Y if yes, otherwise N to exit: " %
+                  get_close_matches(name,data.keys())[0])
     if check == "Y":
       return data[get_close_matches(name, data.keys())[0]]
     elif check == "N":
@@ -23,3 +24,15 @@ def definition(name):
       return "We didn't understand your entry."
   else:
     return "Sorry, this word is not an English word. Please double check your spelling"
+
+#user input and check it against the set of words passed in the JSON file.
+word = input("Enter a name: ")
+
+
+#the output format
+output = definition(word)
+if type(output) == list:
+  for item in output:
+    print(item)
+else:
+  print(output)
